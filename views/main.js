@@ -12,22 +12,13 @@ module.exports = pages =>
     <hr />
     <ul class="list-unstyled">
       <ul>
-        ${pages.map(function(page) {
-          let liOpen = '<li>';
-          let liClose = '</li>';
-          let linkOpen = '<a href="';
-          let linkClose = '">';
-          let aClose = '</a>';
-          return (
-            liOpen +
-            linkOpen +
-            page.slug +
-            linkClose +
-            page.title +
-            aClose +
-            liClose
-          );
-        })}
+        ${pages.map(
+          page => html`
+            <li>
+              <a href="/wiki/${page.slug}">${page.title}</a>
+            </li>
+          `
+        )}
       </ul>
     </ul>
   `);
