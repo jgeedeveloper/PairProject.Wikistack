@@ -11,6 +11,10 @@ module.exports = (pages) => layout(html`
   <hr>
   <ul class="list-unstyled">
     <ul>
-      <!-- PLACEHOLDER LIST OF PAGES -->
+    ${pages.map(function(page) {
+      let liOpen = '<li>'
+      let liClose = '</li>'
+      return liOpen + page.title + liClose
+    })}
     </ul>
   </ul>`);

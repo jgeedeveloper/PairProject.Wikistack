@@ -13,8 +13,8 @@ const userRouter = require ('./routes/user')
 app.use('/wiki', wikiRouter);
 app.use('/user', userRouter);
 
-app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname + '/public')));
+app.use(morgan('dev')); 
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -34,15 +34,15 @@ app.get('/', async (req, res, next) => {
 });
 
 // any remaining requests with an extension send 404
-app.use((req, res, next) => {
-  if (path.extname(req.path).length) {
-    const err = new Error('Not found');
-    err.status = 404;
-    next(err);
-  } else {
-    next();
-  }
-});
+// app.use((req, res, next) => {
+//   if (path.extname(req.path).length) {
+//     const err = new Error('Not found');
+//     err.status = 404;
+//     next(err);
+//   } else {
+//     next();
+//   }
+// });
 
 models.db.authenticate().then(() => {
   console.log('connected to the database');
