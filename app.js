@@ -7,8 +7,8 @@ const PORT = 3000;
 const http = require('http');
 const models = require('./models');
 const server = http.createServer(app);
-const wikiRouter = require('./routes/wiki');
 const userRouter = require('./routes/user');
+const wikiRouter = require('./routes/wiki');
 
 app.use('/wiki', wikiRouter);
 app.use('/users', userRouter);
