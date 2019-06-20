@@ -13,12 +13,21 @@ const Page = db.define('page', {
 });
 
 const User = db.define('user', {
-  name: Sequelize.STRING,
-  email: Sequelize.STRING,
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+        isEmail: true,
+    }
+  },
 });
 
 module.exports = {
-  db,
-  Page,
-  User,
-};
+    db,
+    Page,
+    User,
+  };

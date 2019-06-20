@@ -4,10 +4,14 @@ const layout = require('./views/layout');
 const morgan = require('morgan');
 const path = require('path');
 const PORT = 3000;
-
 const http = require('http');
 const models = require('./models');
 const server = http.createServer(app);
+const wikiRouter = require('./routes/wiki');
+const userRouter = require('./routes/user');
+
+app.use('/wiki', wikiRouter);
+app.use('/user', userRouter);
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname + '/public')));
