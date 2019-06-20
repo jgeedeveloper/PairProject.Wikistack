@@ -75,10 +75,10 @@ wikiRouter.post('/', async (req, res, next) => {
   }
 });
 
-wikiRouter.delete('/:slug/delete', async (req, res, next) => {
-  Page.destroy({ where: { slug: req.params.slug } }).then(result =>
-    res.json(result)
-  );
+wikiRouter.get('/:slug/delete', async (req, res, next) => {
+  await Page.destroy({ where: { slug: req.params.slug } });
+
+  res.redirect('/wiki');
 });
 
 module.exports = wikiRouter;
